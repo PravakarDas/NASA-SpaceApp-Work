@@ -15,7 +15,7 @@ AstroKnight-ImBatman is an interactive web application designed to provide an im
 
 ## Project Overview
 
-THis is a web-based application that aims to deepen users' understanding of the planets in our solar system. The project leverages advanced technologies to provide an engaging learning experience, fostering curiosity and broadening perspectives on the universe.
+This is a web-based application that aims to deepen users' understanding of the planets in our solar system. The project leverages advanced technologies to provide an engaging learning experience, fostering curiosity and broadening perspectives on the universe.
 
 ## Features
 
@@ -64,7 +64,7 @@ cd NASA-SpaceApp-Work
 
 
 3. Download the GLTF 3D model files:
-   - Visit the following Google Drive link to download the 3D model files: [Drive Link](https://drive.google.com/drive/folders/15DFIuNTGMX3VnvFDYm2FS1jRCveDKTFy)
+   - Visit the following Google Drive link to download the 3D model files: [Drive Link](https://pdedu123-my.sharepoint.com/:u:/g/personal/pd_pdedu123_onmicrosoft_com/ETC-N9O6hchJhUL1fsql57MBvS4sSJ-0dnQW2vHjTFnwqQ?e=gGEiih)
    - Extract the downloaded files and place them in the "root" directory
 
 4. Install Node.js dependencies:
