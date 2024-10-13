@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spline Viewer Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .spline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        spline-viewer {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.23/build/spline-viewer.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Scene 1</h2>
+        <div class="spline-container">
+            <spline-viewer url="https://prod.spline.design/WHhnIVHuTU9ZUayR/scene.splinecode"></spline-viewer>
+        </div>
+
+        <h2>Scene 2</h2>
+        <div class="spline-container">
+            <spline-viewer url="https://prod.spline.design/tZTYSxEXbZnkovm7/scene.splinecode"></spline-viewer>
+        </div>
+    </div>
+</body>
+
+</html>

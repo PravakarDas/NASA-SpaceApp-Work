@@ -5,6 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>ImBatman - Feedback</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#feedback-form').on('submit', function(e) {
+                e.preventDefault();
+                var formData = $(this).serializeArray();
+                console.log(formData);
+                
+                $.ajax({
+                    url: '/submit',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        alert('Thank you for your feedback!');
+                        $('#feedback-form')[0].reset();
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", xhr.responseText);
+                        alert('An error occurred: ' + xhr.responseText);
+                    }
+                });
+            });
+
+            $('.delete-btn').click(function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '/delete/' + id,
+                    method: 'DELETE',
+                    success: function(response) {
+                        $('#' + id).remove();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error:", xhr.responseText);
+                        alert('Failed to delete feedback: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body class="bg-black text-white">
     <!-- Navigation Bar -->
@@ -16,7 +57,8 @@
             <ul class="flex space-x-6 text-lg">
                 <li><a href="index.html" class="hover:text-indigo-500">Home</a></li>
                 <li><a href="solar-system.html" class="hover:text-indigo-500">Solar System</a></li>
-                <li><a href="exploration.html" class="hover:text-indigo-500">Exploration</a></li>
+                <li><a href="allPlanets.html" class="hover:text-indigo-500">Exploration</a></li>
+                <li><a href="TriviaHub.html" class="hover:text-indigo-500">TriviaHub</a></li>
                 <li><a href="ai-chatbot.html" class="hover:text-indigo-500">AI Chatbot</a></li>
                 <li><a href="about.html" class="hover:text-indigo-500">Our Team</a></li>
                 <li><a href="feedback.html" class="hover:text-indigo-500">Feedback</a></li>
@@ -29,13 +71,27 @@
         <div class="container mx-auto text-center">
             <h1 class="text-5xl font-bold text-indigo-500 mb-6">Feedback</h1>
             <p class="text-xl mb-10">We value your thoughts! Please leave your feedback below.</p>
-            <form class="bg-gray-800 rounded-lg p-6 w-3/4 mx-auto shadow-lg">
-                <input type="text" class="w-full p-2 mb-4 rounded-lg" placeholder="Your Name">
-                <textarea class="w-full p-2 mb-4 rounded-lg" rows="5" placeholder="Your Feedback"></textarea>
-                <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition duration-300">
+            <form id="feedback-form" class="bg-gray-800 rounded-lg p-6 w-3/4 mx-auto shadow-lg">
+                <input type="text" name="name" class="w-full p-2 mb-4 rounded-lg bg-gray-700 text-white focus:outline-none" placeholder="Your Name">
+                <textarea name="feedback" class="w-full p-2 mb-4 rounded-lg bg-gray-700 text-white focus:outline-none" rows="5" placeholder="Your Feedback"></textarea>
+                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition duration-300">
                     Submit
                 </button>
             </form>
+            
+            <!-- {% if feedbacks %}
+                <h2 class="text-3xl font-semibold mt-8 mb-4">Recent Feedback</h2>
+                {% for feedback in feedbacks %}
+                    <div class="bg-gray-700 rounded-lg p-4 mb-4" id="{{ feedback.id }}">
+                        <strong>{{ feedback.name }}</strong>
+                        <br>
+                        {{ feedback.feedback }}
+                        <button class="mt-2 delete-btn btn btn-danger" data-id="{{ feedback.id }}">Delete</button>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No feedback submitted yet.</p>
+            {% endif %} -->
         </div>
     </section>
 

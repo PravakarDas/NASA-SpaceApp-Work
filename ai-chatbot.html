@@ -11,10 +11,32 @@
             background-color: #f4f4f4;
         }
         #chatbox {
-            border: 1px solid #ccc;
-            height: 300px;
-            overflow-y: scroll;
-            background-color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 400px;
+            /* overflow-y: scroll; */
+            background-color: #1f2937;
+            padding: 15px;
+            border-radius: 8px;
+
+        }
+        .user-message, .ai-message {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            font-size: 16px;
+        }
+        .user-message {
+            background-color: #2563eb;
+            color: white;
+            align-self: flex-end;
+        }
+        .ai-message {
+            background-color: #4b5563;
+            color: white;
+            align-self: flex-start;
         }
         #userInput {
             width: calc(100% - 22px);
@@ -25,7 +47,7 @@
         }
     </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white font-sans">
     <!-- Navigation Bar -->
     <nav class="bg-gradient-to-r from-black to-gray-900 px-8 py-4 shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center">
@@ -35,34 +57,28 @@
             <ul class="flex space-x-6 text-lg">
                 <li><a href="index.html" class="hover:text-indigo-500">Home</a></li>
                 <li><a href="solar-system.html" class="hover:text-indigo-500">Solar System</a></li>
-                <li><a href="exploration.html" class="hover:text-indigo-500">Exploration</a></li>
+                <li><a href="allPlanets.html" class="hover:text-indigo-500">Exploration</a></li>
+                <li><a href="TriviaHub.html" class="hover:text-indigo-500">TriviaHub</a></li>
                 <li><a href="ai-chatbot.html" class="hover:text-indigo-500">AI Chatbot</a></li>
                 <li><a href="about.html" class="hover:text-indigo-500">Our Team</a></li>
                 <li><a href="feedback.html" class="hover:text-indigo-500">Feedback</a></li>
             </ul>
         </div>
     </nav>
-
-<!-- Main Content -->
-<section class="bg-black min-h-screen pt-20">
-    <div class="container mx-auto text-center px-4">
-        <h1 class="text-5xl font-bold text-indigo-500 mb-6">AI Chatbot</h1>
-        <p class="text-xl mb-10">Chat with our AI to explore space topics.</p>
-        <div class="flex flex-col w-full max-w-3xl mx-auto bg-gray-800 rounded-lg p-4">
-            <div id="chatbox" class="flex-1 overflow-y-auto mb-4 p-20 rounded-lg" style="max-height: 400px; background-color: #4B5563;"> 
-                <!-- Chat messages will be appended here -->
-            </div>
-            <div class="flex flex-col md:flex-row w-full">
-                <input type="text" id="userInput" placeholder="Type your message here..." class="p-2 rounded-lg flex-grow mr-0 md:mr-2 mb-2 md:mb-0 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300" />
-                <button id="sendBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition duration-300">Send</button>
+    <section class="bg-black min-h-screen pt-20">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-5xl font-bold text-indigo-500 mb-6">AI Chatbot</h1>
+            <p class="text-xl mb-10">Chat with our AI to explore space topics.</p>
+            <div class="flex flex-col w-full max-w-3xl mx-auto bg-gray-800 rounded-lg p-4">
+                <div id="chatbox" class="flex-1 overflow-y-auto mb-4 rounded-lg">
+                </div>
+                <div class="flex flex-col md:flex-row w-full">
+                    <input type="text" id="userInput" placeholder="Type your message here..." class="p-2 rounded-lg flex-grow mr-0 md:mr-2 mb-2 md:mb-0 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300" />
+                    <button id="sendBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition duration-300">Send</button>
+                </div>
             </div>
         </div>
-        
-    </div>
-</section>
-
-
-
+    </section>
     <!-- Footer -->
     <footer class="bg-gradient-to-r from-gray-900 to-black py-6 text-center">
         <p class="text-sm">© 2024 ImBatman. All Rights Reserved.</p>
@@ -72,41 +88,38 @@
         const chatbox = document.getElementById('chatbox');
         const userInput = document.getElementById('userInput');
         const sendBtn = document.getElementById('sendBtn');
-
-        // Function to append message to chatbox
         function appendMessage(role, text) {
             const message = document.createElement('div');
-            message.textContent = role + ': ' + text;
+            message.classList.add(role === 'You' ? 'user-message' : 'ai-message');
+            message.textContent = text;
             chatbox.appendChild(message);
-            chatbox.scrollTop = chatbox.scrollHeight; // Scroll to bottom
+            chatbox.scrollTop = chatbox.scrollHeight;
         }
-
-        // Send message to the server and get response
         async function sendMessage() {
             const userMessage = userInput.value;
             if (!userMessage) return;
 
             appendMessage('You', userMessage);
             userInput.value = '';
+            try {
+                const response = await fetch('http://localhost:3000/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: userMessage }),
+                });
 
-            // Send request to the server
-            const response = await fetch('http://localhost:3000/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: userMessage }),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                appendMessage('AI', data.reply);
-            } else {
-                appendMessage('AI', 'Error: Unable to get response.');
+                if (response.ok) {
+                    const data = await response.json();
+                    appendMessage('AI', data.reply);
+                } else {
+                    appendMessage('AI', 'Error: Unable to get response.');
+                }
+            } catch (error) {
+                appendMessage('AI', 'Error: Unable to connect to the server.');
             }
         }
-
-        // Event listeners
         sendBtn.addEventListener('click', sendMessage);
         userInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {

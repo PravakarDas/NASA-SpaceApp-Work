@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>ImBatman - Saturn Exploration</title>
+</head>
+<body class="bg-black text-white">
+    <main>
+        <!-- <div class="container mx-auto px-4 py-8">
+        <div class="bg-gradient-to-r from-black to-gray-900 px-8 py-4 shadow-lg fixed top-0 w-full z-50">
+            <h1 class="text-5xl font-bold text-indigo-500 mb-6">Mars Exploration</h1>
+            <p class="text-xl mb-10">Discover the missions and rovers that explore the Red Planet.</p>
+        </div> -->
+        <div id="container3D" style="position: relative;">
+            <canvas style="width: 50%; height: 50%; position: absolute;"></canvas>
+        </div>
+    </main>
+
+
+    <script>
+        // Function to get query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get the planet name from the URL
+        const planetName = getQueryParam('planet');
+        if (planetName && typeof sendPlanetNameToMain === "function") {
+            sendPlanetNameToMain(planetName);
+        }
+    </script>
+
+<!-- 
+    <script>
+        // Send the string to main.js after the page has loaded
+        window.onload = function() {
+            const myString = "NafisRayanIsAlwaysRight";
+            // Pass the string to the main.js context
+            if (typeof sendStringToMain === "function") {
+                sendStringToMain(myString);
+            }
+        };
+    </script> -->
+
+    <script type="module" src="js/mainP.js"></script>
+</body>
+</html>

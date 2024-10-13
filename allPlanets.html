@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>ImBatman - Planet Exploration</title>
+</head>
+<body class="bg-black text-white">
+    <!-- Navigation Bar -->
+    <nav class="bg-gradient-to-r from-black to-gray-900 px-8 py-4 shadow-lg fixed top-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold tracking-wide hover:text-indigo-500 transition-colors duration-300">
+                <img src="assets/images/logo.png" alt="ImBatman" class="h-10 inline"> ImBatman
+            </a>
+            <ul class="flex space-x-6 text-lg">
+                <li><a href="index.html" class="hover:text-indigo-500">Home</a></li>
+                <li><a href="solar-system.html" class="hover:text-indigo-500">Solar System</a></li>
+                <li><a href="allPlanets.html" class="hover:text-indigo-500">Exploration</a></li>
+                <li><a href="TriviaHub.html" class="hover:text-indigo-500">TriviaHub</a></li>
+                <li><a href="ai-chatbot.html" class="hover:text-indigo-500">AI Chatbot</a></li>
+                <li><a href="about.html" class="hover:text-indigo-500">Our Team</a></li>
+                <li><a href="feedback.html" class="hover:text-indigo-500">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="pt-24">
+        <!-- Welcome Section -->
+        <div class="container mx-auto text-center mb-12">
+            <h1 class="text-5xl font-bold text-indigo-500 mb-6">Planet Exploration!</h1>
+            <p class="text-xl mb-10">Explore the planets of our solar system with stunning 3D models and learn more!</p>
+        </div>
+
+        <!-- Planets Grid -->
+        <div class="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Mercury -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=mercury" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Mercury</h2>
+                <p>Mercury is the closest planet to the Sun and the smallest in the Solar System. It has a very thin atmosphere and experiences extreme temperature variations.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 4,880 km</li>
+                    <li><strong>Orbit Period:</strong> 88 Earth days</li>
+                    <li><strong>Surface Temperature:</strong> -173°C to 427°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('mercury')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+
+            <!-- Venus -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=venus" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Venus</h2>
+                <p>Venus is often called Earth's twin due to its similar size and composition. However, its thick atmosphere is primarily carbon dioxide, leading to a runaway greenhouse effect.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 12,104 km</li>
+                    <li><strong>Orbit Period:</strong> 225 Earth days</li>
+                    <li><strong>Surface Temperature:</strong> About 467°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('venus')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+
+            <!-- Earth -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=earth" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Earth</h2>
+                <p>Earth is the only planet known to support life. It has a diverse climate and ecosystems, and its atmosphere is rich in oxygen and nitrogen.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 12,742 km</li>
+                    <li><strong>Orbit Period:</strong> 365.25 days</li>
+                    <li><strong>Surface Temperature:</strong> -88°C to 58°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('earth')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+
+            <!-- Mars -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=mars" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Mars</h2>
+                <p>Mars, known as the Red Planet, has the largest volcano and canyon in the Solar System. Scientists are actively exploring Mars for signs of past life.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 6,779 km</li>
+                    <li><strong>Orbit Period:</strong> 687 Earth days</li>
+                    <li><strong>Surface Temperature:</strong> -125°C to 20°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('mars')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+
+            <!-- Jupiter -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=jupiter" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Jupiter</h2>
+                <p>Jupiter is the largest planet in the Solar System, known for its Great Red Spot, a giant storm, and its many moons, including the largest, Ganymede.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 139,822 km</li>
+                    <li><strong>Orbit Period:</strong> 11.86 Earth years</li>
+                    <li><strong>Surface Temperature:</strong> -145°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('jupiter')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+
+            <!-- Saturn -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=saturn" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Saturn</h2>
+                <p>Saturn is famous for its stunning rings made of ice and rock particles. It is the second-largest planet and has numerous moons.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 116,464 km</li>
+                    <li><strong>Orbit Period:</strong> 29.5 Earth years</li>
+                    <li><strong>Surface Temperature:</strong> -178°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('saturn')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+
+            <!-- Uranus -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=uranus" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Uranus</h2>
+                <p>Uranus is unique for its tilted axis, which causes extreme seasonal variations. It is an ice giant with a bluish color due to methane in its atmosphere.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 50,724 km</li>
+                    <li><strong>Orbit Period:</strong> 84 Earth years</li>
+                    <li><strong>Surface Temperature:</strong> -224°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('uranus')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+
+            <!-- Neptune -->
+            <div class="iframe-container fade-in">
+                <iframe src="planet.html?planet=neptune" title="Solar System Animation" class="w-full h-80 md:h-96 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"></iframe>
+            </div>
+            <div class="fade-in">
+                <h2 class="text-xl font-bold">Neptune</h2>
+                <p>Neptune, the farthest planet from the Sun, is known for its deep blue color and strong winds. It has a dynamic atmosphere with storms similar to Jupiter's.</p>
+                <ul class="mt-2 list-disc ml-5">
+                    <li><strong>Diameter:</strong> 49,244 km</li>
+                    <li><strong>Orbit Period:</strong> 165 Earth years</li>
+                    <li><strong>Surface Temperature:</strong> -214°C</li>
+                </ul>
+                <button onclick="navigateToPlanet('neptune')" class="mt-4 px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">Explore on Foot</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function navigateToPlanet(planetName) {
+            window.location.href = `exploration.html?planet=${planetName}`;
+        }
+    </script>
+</body>
+</html>
