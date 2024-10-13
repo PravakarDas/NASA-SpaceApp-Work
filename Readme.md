@@ -15,7 +15,7 @@ AstroKnight-ImBatman is an interactive web application designed to provide an im
 
 ## Project Overview
 
-AstroKnight-ImBatman is a web-based application that aims to deepen users' understanding of the planets in our solar system. The project leverages advanced technologies to provide an engaging learning experience, fostering curiosity and broadening perspectives on the universe.
+THis is a web-based application that aims to deepen users' understanding of the planets in our solar system. The project leverages advanced technologies to provide an engaging learning experience, fostering curiosity and broadening perspectives on the universe.
 
 ## Features
 
@@ -56,11 +56,11 @@ AstroKnight-ImBatman/ ├── assets/ │ ├── images/ │ └── vide
 ## Installation and Setup
 
 1. Clone the repository:
-git clone https://github.com/NafisRayan/AstroKnight-ImBatman.git
+git clone https://github.com/PravakarDas/NASA-SpaceApp-Work
 
 
 2. Navigate to the project directory:
-cd AstroKnight-ImBatman
+cd NASA-SpaceApp-Work
 
 
 3. Download the GLTF 3D model files:
